@@ -2,6 +2,7 @@ import { fetchMovies, onError } from 'API/API';
 import MoviesList from 'components/FimlList/FimlList';
 import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
+import { HomeMainText, HomeSection } from './Home.styled';
 const endPoint = '/trending/movie/day';
 
 const Home = () => {
@@ -21,11 +22,11 @@ const Home = () => {
   }, [films]);
     
     return (
-      <section>
-        <h2>Popular movies</h2>
+      <HomeSection>
+        <HomeMainText>Popular movies</HomeMainText>
         {loading && <Loader />}
         <MoviesList films={films} />
-      </section>
+      </HomeSection>
     );
 };
 export default Home;

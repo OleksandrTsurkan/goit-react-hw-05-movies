@@ -2,6 +2,7 @@ import { fetchMovieDetails, onError } from 'API/API';
 import Loader from 'components/Loader/Loader';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { ButtonAdditional, MoviesAdditionalLi, MoviesAdditionalUl, MoviesDetailsCard, MoviesDetailsDiv, MoviesDetailsMainText, MoviesDetailsSection } from './MoviesDetails.styled';
 
 const endPoint = '/movie';
 
@@ -36,13 +37,13 @@ const MovieDetails = () => {
     overview,
   } = movie;
   return ( 
-    <section>
+    <MoviesDetailsSection>
       <Link to={backLinkRef.current}>{'BACK'}</Link>
-      <h2> Movie Details:</h2>
+      <MoviesDetailsMainText> Movie Details:</MoviesDetailsMainText>
       {loading && <Loader />}
       {movie && (
         <>
-          <div>
+          <MoviesDetailsDiv>
             <img
               src={
                 poster_path
@@ -54,7 +55,7 @@ const MovieDetails = () => {
               alt={title}
               width="200"
             />
-            <div>
+            <MoviesDetailsCard>
               <h3>{original_title}</h3>
               <p>
                 <b>Release date:</b> {release_date}
@@ -69,27 +70,27 @@ const MovieDetails = () => {
               <p>
                 <b>Overview:</b> {overview}
               </p>
-            </div>
-          </div>
+            </MoviesDetailsCard>
+          </MoviesDetailsDiv>
           <h3>Additional information:</h3>
-          <ul>
-            <li>
+          <MoviesAdditionalUl>
+            <MoviesAdditionalLi>
               <Link to="cast">
-                <button>Cast</button>
+                <ButtonAdditional>Cast</ButtonAdditional>
               </Link>
-            </li>
+            </MoviesAdditionalLi>
             <li>
               <Link to="reviews">
-                <button>Reviews</button>
+                <ButtonAdditional>Reviews</ButtonAdditional>
               </Link>
             </li>
-          </ul>
+          </MoviesAdditionalUl>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
         </>
       )}
-    </section>
+    </MoviesDetailsSection>
   );
 };
 

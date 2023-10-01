@@ -1,7 +1,9 @@
+import { ButtonSearch, FormInput, FormSearch } from "./Search.styled";
+
 const Search = ({ onSubmitSearch, value }) => (
   <div>
-    <form onSubmit={onSubmitSearch}>
-      <input
+    <FormSearch onSubmit={onSubmitSearch}>
+      <FormInput
         type="text"
         name="search"
         autoComplete="off"
@@ -9,8 +11,8 @@ const Search = ({ onSubmitSearch, value }) => (
         defaultValue={value}
         placeholder="Search for a movie..."
       />
-      <button type="submit">Search</button>
-    </form>
+      <ButtonSearch type="submit">Search</ButtonSearch>
+    </FormSearch>
   </div>
 );
 
