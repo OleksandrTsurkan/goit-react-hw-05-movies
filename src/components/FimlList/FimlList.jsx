@@ -1,15 +1,24 @@
-import LinesEllipsis from "react-lines-ellipsis";
-import { Link, useLocation } from "react-router-dom";
+import LinesEllipsis from 'react-lines-ellipsis';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  MoviesDiv,
+  MoviesHeader,
+  MoviesImg,
+  MoviesLi,
+  MoviesUl,
+} from './FilmList.styled';
+
+import css from './FilmList.module.css'
 
 const MoviesList = ({ films }) => {
   const location = useLocation();
 
   return (
-    <ul>
+    <MoviesUl>
       {films.map(({ id, title, overview, poster_path }) => (
-        <li key={id}>
+        <MoviesLi key={id}>
           <Link to={`/movies/${id}`} state={{ from: location }}>
-            <img
+            <MoviesImg
               src={
                 poster_path
                   ? `http://image.tmdb.org/t/p/w154${poster_path}`
@@ -21,18 +30,19 @@ const MoviesList = ({ films }) => {
               width="154"
               height="231"
             />
-            <div>
-              <h3>{title}</h3>
+            <MoviesDiv>
+              <MoviesHeader>{title}</MoviesHeader>
               <LinesEllipsis
                 text={overview}
-                maxLine="4"
+                maxLine="3"
                 ellipsis="..."
+                className={css.MoviesListTextDesc}
               ></LinesEllipsis>
-            </div>
+            </MoviesDiv>
           </Link>
-        </li>
+        </MoviesLi>
       ))}
-    </ul>
+    </MoviesUl>
   );
 };
 

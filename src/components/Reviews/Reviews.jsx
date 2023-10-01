@@ -2,6 +2,7 @@ import { fetchMovieReviews, onError } from 'API/API';
 import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ReviewsLi, ReviewsMainText, ReviewsUl } from './Reviews.styles';
 
 const endPoint = '/movie';
 
@@ -23,19 +24,19 @@ const Reviews = () => {
   }, [movieId]);
   return (
     <>
-      <h3>Reviews:</h3>
+      <ReviewsMainText>Reviews:</ReviewsMainText>
       {loading && <Loader />}
       {reviews.length !== 0 ? (
-        <ul>
+        <ReviewsUl>
           {reviews.map(({ id, author, content }) => (
-            <li key={id}>
+            <ReviewsLi key={id}>
               <p>
                 <b>Author:</b> {author}
               </p>
               <p>{content}</p>
-            </li>
+            </ReviewsLi>
           ))}
-        </ul>
+        </ReviewsUl>
       ) : (
         <p> Something wrong</p>
       )}

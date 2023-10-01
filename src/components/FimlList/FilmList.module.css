@@ -1,0 +1,10 @@
+ .MoviesListTextDesc {
+    font-size: 14px;
+    color: black;
+    list-style: none;
+    text-decoration: none;
+  }
+
+   .MoviesListTextDesc:hover {
+       color: blue;
+   }

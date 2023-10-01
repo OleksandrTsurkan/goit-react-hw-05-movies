@@ -35,9 +35,9 @@ const MovieDetails = () => {
     vote_average,
     overview,
   } = movie;
-  return (
+  return ( 
     <section>
-      <Link to={backLinkRef.current}>{'<<< BACK'}</Link>
+      <Link to={backLinkRef.current}>{'BACK'}</Link>
       <h2> Movie Details:</h2>
       {loading && <Loader />}
       {movie && (

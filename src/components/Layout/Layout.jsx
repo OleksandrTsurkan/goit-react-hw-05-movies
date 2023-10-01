@@ -1,16 +1,22 @@
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { LayoutHeader, LayoutMainText, LayoutNav } from './Layout.styled';
+import css from './Layout.module.css'
 
 export const Layout = () => {
   return (
     <>
-      <header>
-        <h1>Find your movie</h1>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/movies">Movies</NavLink>
-        </nav>
-      </header>
+      <LayoutHeader>
+        <LayoutMainText>Find your movie</LayoutMainText>
+        <LayoutNav>
+          <NavLink className={css.NavLink} to="/">
+            Home
+          </NavLink>
+          <NavLink className={css.NavLink} to="/movies">
+            Movies
+          </NavLink>
+        </LayoutNav>
+      </LayoutHeader>
       <main>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
